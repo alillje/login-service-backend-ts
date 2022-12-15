@@ -3,6 +3,8 @@ import helmet from 'helmet'
 import logger from 'morgan'
 import { connectDB } from './config/mongoose.js'
 import { router } from './routes/router.js'
+import { Request, Response, NextFunction } from "express";
+
 
 async function start() {
   try {
@@ -23,7 +25,7 @@ async function start() {
     app.use('/', router)
 
     // Error handler.
-    app.use(function (err, req, res, next) {
+    app.use(function (err:any, req: Request, res: Response, next: NextFunction) {
       err.status = err.status || 500
       // Set error messages depending on status code
       if (err.status === 500) {
