@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "esnext",
+        "strict": true,
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "typeRoots": [
+            "@types",
+            "./node_modules/@types",
+          ]   
+    }
+}

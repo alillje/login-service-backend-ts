@@ -4,7 +4,7 @@
  * @author Andreas Lillje
  * @version 1.0.0
  */
-
+import { Request, Response, NextFunction } from "express";
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import createError from 'http-errors'
@@ -21,21 +21,25 @@ const controller = new AccountController()
  * @param {object} res - Express response object.
  * @param {Function} next - Express next middleware function.
  */
-const authenticatePasswordResetJWT = (req, res, next) => {
+const authenticatePasswordResetJWT = (req: Request, res: Response, next: NextFunction):void => {
   try {
-    const [authenticationScheme, token] = req.headers.authorization?.split(' ')
-
-    if (authenticationScheme !== 'Bearer') {
+    if (!req.headers.authorization) {
+      throw new Error('Missing authorization header.')
+    }
+    
+    const [authenticationScheme, token] = req.headers.authorization.split(' ');
+        
+    if (authenticationScheme && authenticationScheme !== 'Bearer') {
       throw new Error('Invalid authentication scheme.')
     }
 
     // Set properties to req.user from JWT payload
-    const payload = jwt.verify(token, Buffer.from(process.env.PASSWORD_RESET_PUBLIC, 'base64').toString('ascii'))
+    const payload = jwt.verify(token, Buffer.from(process.env.PASSWORD_RESET_PUBLIC as string, 'base64').toString('ascii'))
     req.user = {
-      sub: payload.sub
+      sub: payload.sub as string
     }
     next()
-  } catch (err) {
+  } catch (err: any) {
     const error = createError(401)
     err.message = 'Invalid access token'
     error.cause = err
