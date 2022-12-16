@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc -p .",
-    "dev": "nodemon --inspect -r dotenv/config src/server.js",
+    "dev": "nodemon --inspect -r dotenv/config dist/server.js",
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0"
   },
@@ -28,11 +28,13 @@
   },
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.7",
+    "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.14",
     "@types/http-errors": "^2.0.1",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/morgan": "^1.9.3",
     "@types/node": "^18.11.11",
+    "@types/nodemailer": "^6.4.6",
     "@types/validator": "^13.7.10",
     "eslint": "^8.27.0",
     "eslint-config-standard": "^17.0.0",

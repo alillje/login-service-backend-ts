@@ -9,6 +9,7 @@ import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 import validator from 'validator'
 
+
 const { isEmail } = validator
 
 // Create a schema.
@@ -67,7 +68,7 @@ schema.pre('save', async function () {
  * @param {string} password - The password to authenticate.
  * @returns {Promise<User>} ...
  */
-schema.statics.authenticate = async function (username, password) {
+schema.statics.authenticate = async function (username:string, password:string) {
   const user = await this.findOne({ username })
   // If no user found or password is wrong, throw an error.
   if (!(await bcrypt.compare(password, user?.password))) {
@@ -79,4 +80,4 @@ schema.statics.authenticate = async function (username, password) {
 }
 
 // Create a model using the schema.
-export const User = mongoose.model('User', schema)
+export const User = mongoose.model<IUser, UserModel>('User', schema)

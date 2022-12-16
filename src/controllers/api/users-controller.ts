@@ -53,7 +53,7 @@ export class UsersController {
     const query = {} as Query
     // Pagination
     const page = req.query.page
-    const limit = req.query.limit
+    const limit:number = Number(req.query.limit)
     const startIndex = Number(page) - 1 * Number(limit)
     const results = {} as QueryResults
 

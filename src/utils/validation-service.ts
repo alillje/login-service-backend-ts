@@ -12,7 +12,7 @@ import { ForbiddenCharacters } from './enum/forbidden-chars.js'
  * @param {string} input - The string to validate
  * @returns {boolean} - True if input is valid, false otherwise.
  */
-export const isValidUsername = (input) => {
+export const isValidUsername = (input: string): boolean => {
   for (const char of Object.values(ForbiddenCharacters)) {
     if (input.includes(char)) {
       return false
@@ -27,6 +27,6 @@ export const isValidUsername = (input) => {
  * @param {string} password - The password to validate
  * @returns {boolean} - True if input is valid, false otherwise.
  */
-export const isValidPassword = (password) => {
+export const isValidPassword = (password: string): boolean => {
   return password.length >= 10 && password.length < 256
 }

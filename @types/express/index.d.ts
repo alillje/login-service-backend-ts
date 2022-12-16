@@ -1,7 +1,8 @@
 export {}
 
-declare interface RequestUser {
-        sub: string
+declare type RequestUser = {
+    username?: string;
+    sub?: string
 }
 
 declare global {

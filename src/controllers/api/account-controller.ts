@@ -85,6 +85,7 @@ export class AccountController {
         req.body.username.toLowerCase(),
         req.body.password
       )
+
       const payload = {
         sub: user.id
       }
@@ -175,9 +176,16 @@ export class AccountController {
         error.message = 'One or more required fields are missing.'
         next(error)
       }
+
       const user = await User.findById(req.user.sub)
-      user.password = req.body.newPassword
-      user.save()
+      if (user) {
+        user.password = req.body.newPassword
+        user.save()
+      } else {
+        const error = createError(404)
+        error.message = 'No user found.'
+        next(error)
+      }
       res
         .status(204)
         .end()

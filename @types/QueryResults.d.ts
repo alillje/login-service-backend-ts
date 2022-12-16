@@ -1,9 +1,9 @@
 declare type QueryResults = {
-    users?: Promise<object>,
+    users?: object,
     next?: {
         page: number
     },
-    previous: {
+    previous?: {
         page: number
     },
     pages: number
