@@ -50,12 +50,29 @@ export class UsersController {
    * @param {Function} next - Express next middleware function.
    */
   async getUsers (req: Request, res: Response, next: NextFunction) {
-    const query = {} as Query
+    // const query = {} as Query
+    const query = {
+      username: {
+        $regex: new RegExp('', 'i')
+      },
+    }
+
+    // const results = {} as QueryResults
+    const results = {
+      users: {},
+      next: {
+          page: 0
+      },
+      previous: {
+          page: 0
+      },
+      pages: 0
+    }
+
     // Pagination
     const page = req.query.page
     const limit = Number(req.query.limit)
     const startIndex = Number(page) - 1 * Number(limit)
-    const results = {} as QueryResults
 
     try {
       // Check length of all users
