@@ -17,13 +17,13 @@ Once logged in with valid credentials, use the JWT you get in return as `Bearer 
 <br>
 
 ## Resetting password 
-**If you have forgotten your password**, send request to `/password/restore`, according to the documentation. 
+**If you have forgotten your password**, send a POST request to `/password/restore`, according to the documentation. 
 <br>
-You will recieve temporary a JWT to the provided email valid only for resetting your password.
-Please ensure to check trash email.
+You will recieve a temporary JWT to the provided email, valid only for resetting your password.
+Please ensure to check the junk mail.
 <br>
 <br>
-Use this token to reset your password by sending request to `/password/reset` accoring to the documentation.
+Use this token to reset your password by sending a PATCH request to `/password/reset` accoring to the documentation.
 <br>
 <b>The token to reset your password will be valid for 5 minutes.</b>
 
