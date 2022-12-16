@@ -4,7 +4,7 @@
  * @author Andreas Lillje
  * @version 1.0.0
  */
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import createError from 'http-errors'
@@ -27,7 +27,7 @@ const authenticatePasswordResetJWT = (req: Request, res: Response, next: NextFun
       throw new Error('Missing authorization header.')
     }
     
-    const [authenticationScheme, token] = req.headers.authorization.split(' ');
+    const [authenticationScheme, token] = req.headers.authorization.split(' ')
         
     if (authenticationScheme && authenticationScheme !== 'Bearer') {
       throw new Error('Invalid authentication scheme.')

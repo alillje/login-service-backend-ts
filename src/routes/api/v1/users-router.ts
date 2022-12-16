@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import createError from 'http-errors'
