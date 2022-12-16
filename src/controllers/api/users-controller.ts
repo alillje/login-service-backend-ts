@@ -50,14 +50,12 @@ export class UsersController {
    * @param {Function} next - Express next middleware function.
    */
   async getUsers (req: Request, res: Response, next: NextFunction) {
-    const query = {
-      username: string : undefined
-    }
+    const query = {} as QueryResults
     // Pagination
     const page = req.query.page
     const limit = req.query.limit
     const startIndex = Number(page) - 1 * Number(limit)
-    const results:QueryResults = {}
+    const results = {} 
 
     try {
       // Check length of all users
@@ -96,7 +94,7 @@ export class UsersController {
    * @param {object} res - Express response object.
    * @param {Function} next - Express next middleware function.
    */
-  async deleteUser (req, res, next) {
+  async deleteUser (req: Request, res: Response, next: NextFunction) {
     try {
       if (req.user.sub !== req.params.id) {
         const error = createError(403)

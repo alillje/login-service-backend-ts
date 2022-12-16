@@ -8,7 +8,6 @@ declare global {
     namespace Express {
         interface Request {
             user: RequestUser
-            query: QueryResults
         }
     }
 }

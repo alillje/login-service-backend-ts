@@ -1,5 +1,4 @@
-declare interface QueryResults {
-    username: string;
+export type QueryResults = {
+    username?: string
 }
 
-export { QueryResults }
