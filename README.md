@@ -1,3 +1,5 @@
+<i>This is the TypeScript version of: https://github.com/alillje/login-service-backend</i>
+
 # Login Service API
 
 This is a login service that provides the opportunity for users to register, login, search for other users and delete their profile.
